@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alaa Ali Abdallah — Filmmaker, Photographer &amp; Director | Nablus, Palestine</title>
   <meta name="description" content="Alaa 'Regash' Aliabdallah — Palestinian filmmaker, photographer and cinematographer based in Nablus. Co-director of Palestine Comedy Club (2025), winner of the Spirit of Raindance Award. Screened at SXSW London, IDFA, DOC NYC, Sheffield DocFest.">
+  <meta name="referrer" content="no-referrer">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#3C4A2E">
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
@@ -215,9 +216,36 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: var(--olive-tint);
       position: relative;
       padding: 4rem var(--gutter) 6rem;
+      overflow: hidden;
+      background: #1A1F14;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.squarespace-cdn.com/content/v1/65a0086abd88bb013230496d/7338f538-97e0-4472-b615-9437c519a62c/Palestine+Comedy+Club+Still+1+%281920+x+1080+px%29.png') center/cover no-repeat;
+      transform: scale(1.1);
+      will-change: transform;
+    }
+
+    .hero__bg-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(26, 31, 20, 0.65) 0%,
+          rgba(26, 31, 20, 0.35) 35%,
+          rgba(26, 31, 20, 0.4) 65%,
+          rgba(26, 31, 20, 0.8) 100%
+        );
+      z-index: 1;
+    }
+
+    .hero > *:not(.hero__bg):not(.hero__bg-overlay):not(.hero__leaves) {
+      position: relative;
+      z-index: 2;
     }
 
     /* Gold rules at hero edges */
@@ -228,25 +256,28 @@
       right: 10%;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: 0.3;
+      opacity: 0.25;
+      z-index: 3;
     }
     .hero::before { top: 0; }
     .hero::after { bottom: 0; }
 
     .hero__branch {
       position: absolute;
-      opacity: 0.12;
+      opacity: 0.15;
       pointer-events: none;
+      z-index: 2;
     }
     .hero__branch--tl { top: 2rem; left: 2rem; width: 200px; }
     .hero__branch--br { bottom: 2rem; right: 2rem; width: 200px; transform: scaleX(-1) scaleY(-1); }
+    .hero__branch svg { color: var(--olive-pale); }
 
     .hero__est {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(0.7rem, 1vw, 0.9rem);
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--olive-mid);
+      color: var(--olive-pale);
       opacity: 0;
       margin-bottom: 2rem;
     }
@@ -257,14 +288,14 @@
       font-weight: 400;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--olive-mid);
+      color: rgba(197, 203, 173, 0.8);
       opacity: 0;
       margin-bottom: 0.5rem;
     }
 
     .hero__title {
       font-size: var(--h-hero);
-      color: var(--olive-deep);
+      color: var(--cream);
       line-height: 1.05;
       margin-bottom: 0;
       letter-spacing: -0.02em;
@@ -288,7 +319,7 @@
       line-height: 0.9;
       letter-spacing: 0.06em;
       color: transparent;
-      -webkit-text-stroke: 2px var(--olive-deep);
+      -webkit-text-stroke: 2px var(--cream);
       margin: 0.15em 0;
     }
 
@@ -304,13 +335,13 @@
       font-size: clamp(0.8rem, 1.2vw, 1rem);
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--olive-mid);
+      color: rgba(197, 203, 173, 0.85);
       margin-bottom: 0.75rem;
       opacity: 0;
     }
     .hero__location {
       font-size: var(--small);
-      color: var(--olive-mid);
+      color: var(--olive-pale);
       opacity: 0;
     }
 
@@ -324,13 +355,14 @@
       align-items: center;
       gap: 0.5rem;
       opacity: 0;
+      z-index: 2;
     }
-    .hero__scroll-line { width: 1px; height: 0; background: var(--olive-mid); }
+    .hero__scroll-line { width: 1px; height: 0; background: var(--olive-pale); }
     .hero__scroll-text {
       font-size: 0.65rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--olive-mid);
+      color: var(--olive-pale);
     }
 
     .hero__leaves {
@@ -339,9 +371,10 @@
       width: 100%; height: 100%;
       pointer-events: none;
       overflow: hidden;
+      z-index: 2;
     }
     .hero__leaf { position: absolute; top: -30px; opacity: 0; }
-    .hero__leaf svg { width: 16px; height: 24px; }
+    .hero__leaf svg { width: 16px; height: 24px; color: var(--olive-pale); }
 
     @keyframes hero-breathe {
       0%, 100% { transform: scale(1); }
@@ -1374,7 +1407,7 @@
       .about__grid { grid-template-columns: 1fr; }
       .about__portrait { max-width: 450px; margin: 0 auto; }
       .contact__heading { font-size: clamp(1.8rem, 5.5vw, 3.5rem); }
-      .hero__title-accent { font-size: clamp(4rem, 14vw, 8rem); }
+      .hero__title-accent { font-size: clamp(4rem, 14vw, 8rem); -webkit-text-stroke-width: 1.5px; }
 
       /* Film section stacks vertically on iPad portrait */
       .film-track { flex-direction: column; width: 100% !important; }
@@ -1414,6 +1447,7 @@
       .work-card { min-height: 280px; }
 
       .hero { min-height: 100vh; padding: 3rem var(--gutter) 5rem; }
+      .hero__bg { transform: scale(1.05); }
       .hero__title { font-size: clamp(2.5rem, 10vw, 4rem); }
       .hero__title-accent {
         font-size: clamp(3.5rem, 16vw, 6rem);
@@ -1474,6 +1508,7 @@
       }
       .loader { display: none !important; }
       body { overflow: auto !important; }
+      .hero__bg { transform: scale(1) !important; }
       .hero__title .word-wrap span { transform: none !important; }
       .hero__subtitle, .hero__location, .hero__scroll { opacity: 1 !important; }
       .hero__est, .hero__title-pre { opacity: 1 !important; }
@@ -1572,6 +1607,9 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero section" id="hero">
+    <div class="hero__bg" id="heroBg"></div>
+    <div class="hero__bg-overlay"></div>
+
     <div class="hero__branch hero__branch--tl">
       <svg viewBox="0 0 200 200"><use href="#branch-corner"/></svg>
     </div>
@@ -2266,9 +2304,17 @@
 
         gsap.to('.hero__scroll-line', { height: 40, duration: 1.2, ease: 'power2.inOut', yoyo: true, repeat: -1 });
 
+        /* Hero background zoom-in reveal */
+        gsap.from('#heroBg', { scale: 1.2, duration: 2.5, ease: 'power2.out', delay: 0.2 });
+
         createLeaves('heroLeaves', 18);
 
         if (!isMobile) {
+          /* Parallax: bg moves slower than scroll */
+          gsap.to('#heroBg', {
+            yPercent: 20,
+            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
+          });
           gsap.to('.hero__branch--tl', {
             y: -40,
             scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
