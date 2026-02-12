@@ -1,0 +1,56 @@
+{
+  "festival_selections": [
+    {
+      "festival": "SXSW London",
+      "film": "Palestine Comedy Club",
+      "year": 2025,
+      "designation": "National UK Premiere",
+      "result": "Official Selection"
+    },
+    {
+      "festival": "Sheffield DocFest",
+      "film": "Palestine Comedy Club",
+      "year": 2025,
+      "designation": null,
+      "result": "Official Selection"
+    },
+    {
+      "festival": "IDFA",
+      "full_name": "International Documentary Film Festival Amsterdam",
+      "film": "Palestine Comedy Club",
+      "year": 2025,
+      "designation": "European Premiere",
+      "result": "Official Selection"
+    },
+    {
+      "festival": "DOC NYC",
+      "film": "Palestine Comedy Club",
+      "year": 2025,
+      "designation": "International Premiere",
+      "result": "Official Selection"
+    },
+    {
+      "festival": "Raindance Film Festival",
+      "film": "Palestine Comedy Club",
+      "year": 2025,
+      "designation": null,
+      "result": "Winner",
+      "award": "Spirit of Raindance Award"
+    },
+    {
+      "festival": "Bath Film Festival",
+      "film": "Palestine Comedy Club",
+      "year": 2025,
+      "designation": null,
+      "result": "Official Selection"
+    }
+  ],
+  "pitched": [
+    {
+      "event": "Cannes Docs",
+      "film": "Palestine Comedy Club",
+      "context": "Pitched at Palestine Film Institute showcase",
+      "year": 2024
+    }
+  ]
+}

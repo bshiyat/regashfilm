@@ -1,0 +1,46 @@
+{
+  "films": [
+    {
+      "title": "Palestine Comedy Club",
+      "year": 2025,
+      "type": "Documentary",
+      "runtime": {
+        "theatrical": "92 min",
+        "broadcast": "52 min"
+      },
+      "role": "Co-Director",
+      "co_director": "Charlotte Knowles",
+      "production_company": "Tough Crowd Limited",
+      "sales_agent": "First Hand Films",
+      "imdb": "https://www.imdb.com/title/tt35665999",
+      "synopsis": "A documentary following the Palestinian comedy scene, exploring how humor becomes a form of resistance and resilience in the face of adversity.",
+      "crew": {
+        "directors": ["Alaa Aliabdallah", "Charlotte Knowles"],
+        "production_company": "Tough Crowd Limited",
+        "sales": "First Hand Films"
+      },
+      "status": "Released",
+      "festival_selections": [
+        "SXSW London",
+        "Sheffield DocFest",
+        "IDFA",
+        "DOC NYC",
+        "Raindance Film Festival",
+        "Bath Film Festival"
+      ],
+      "awards": [
+        {
+          "festival": "Raindance Film Festival",
+          "award": "Spirit of Raindance Award",
+          "result": "Winner"
+        }
+      ],
+      "pitched_at": [
+        {
+          "event": "Cannes Docs",
+          "context": "Palestine Film Institute showcase"
+        }
+      ]
+    }
+  ]
+}

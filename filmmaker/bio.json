@@ -1,0 +1,47 @@
+{
+  "name": {
+    "full": "Alaa Aliabdallah",
+    "nickname": "Regash",
+    "display": "Alaa \"Regash\" Aliabdallah"
+  },
+  "location": {
+    "city": "Nablus",
+    "country": "Palestine"
+  },
+  "roles": [
+    "Photographer",
+    "Filmmaker",
+    "Director",
+    "Cinematographer"
+  ],
+  "career": {
+    "started_professionally": 2014,
+    "background": "Started in circus performance before transitioning to photography and filmmaking",
+    "online_audience": "20,000+"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/regashots/",
+    "instagram_handle": "@regashots",
+    "imdb": "https://www.imdb.com/name/nm14553438/",
+    "citerne": "https://citerne.live/en/artist/alaa-aliabdallah"
+  },
+  "bio": "Alaa \"Regash\" Aliabdallah is a Palestinian photographer and filmmaker based in Nablus, Palestine. Beginning his creative journey in circus performance with the Palestinian Circus School, he transitioned to photography in 2014 and has since built a career spanning documentary filmmaking, fashion photography, and creative direction. His work captures the vibrant cultural life of Palestine while bringing Palestinian stories to international audiences.",
+  "clients_and_collaborators": [
+    "Palestinian Circus School",
+    "The Freedom Theatre",
+    "Stereo48 Dance Company",
+    "Sarreyet Ramallah",
+    "Tough Crowd Limited",
+    "First Hand Films",
+    "Palestine Film Institute"
+  ],
+  "skills": [
+    "Documentary filmmaking",
+    "Photography",
+    "Cinematography",
+    "Creative direction",
+    "Fashion photography",
+    "Event photography",
+    "Portrait photography"
+  ]
+}

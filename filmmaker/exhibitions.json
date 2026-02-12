@@ -1,0 +1,19 @@
+{
+  "exhibitions": [
+    {
+      "title": "Photography Exhibition",
+      "year": 2016,
+      "venue": "French Institute",
+      "type": "Solo Exhibition",
+      "description": "Photography exhibition showcasing work by Alaa Aliabdallah"
+    },
+    {
+      "title": "A Message Through Camera",
+      "year": 2017,
+      "venue": "Arab American University",
+      "type": "TEDx Talk / Exhibition",
+      "event": "TEDx",
+      "description": "TEDx presentation exploring visual storytelling and the power of photography as a medium for communication"
+    }
+  ]
+}
