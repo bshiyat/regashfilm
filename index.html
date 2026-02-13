@@ -396,7 +396,7 @@
       position: absolute;
       top: -10%;
       left: 0;
-      will-change: transform;
+      /* will-change set by JS on desktop only */
     }
     .about__portrait-inner img {
       width: 100%;
@@ -486,7 +486,7 @@
       background: inherit;
       background-size: cover;
       background-position: center;
-      will-change: transform;
+      /* will-change set by JS on desktop only */
     }
     .showreel__overlay {
       position: absolute;
@@ -615,7 +615,6 @@
     .marquee-track {
       display: flex;
       white-space: nowrap;
-      will-change: transform;
     }
     .marquee-track span {
       display: inline-block;
@@ -1142,7 +1141,7 @@
     .collab-scroll {
       display: flex;
       white-space: nowrap;
-      will-change: transform;
+      /* will-change set by JS on desktop only */
     }
     .collab-scroll__name {
       font-family: 'Cormorant Garamond', serif;
@@ -1402,6 +1401,9 @@
 
     /* ============ MOBILE ============ */
     @media (max-width: 767px) {
+      /* Improve mobile perf: contain layout on sections */
+      .section { contain: layout style; }
+      .grain-overlay { display: none !important; }
       .about__grid { grid-template-columns: 1fr; }
       .about__portrait {
         max-width: 400px;
@@ -2247,14 +2249,25 @@
         initCursor();
         initMagneticButtons();
         initBackToTop();
+
+        /* Enable will-change only on desktop for parallax elements */
+        if (!isMobile) {
+          document.querySelectorAll('.about__portrait-inner, .showreel__bg-inner, .collab-scroll, .marquee-track').forEach(function(el) {
+            el.style.willChange = 'transform';
+          });
+        }
       }
 
-      /* Lenis */
+      /* Lenis — desktop only for smooth scroll, skip on mobile for native perf */
       function initLenis() {
+        if (isMobile) {
+          ScrollTrigger.defaults({ scroller: window });
+          return;
+        }
         lenis = new Lenis({
-          duration: 1.4,
+          duration: 1.2,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          touchMultiplier: 2
+          touchMultiplier: 1
         });
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add((time) => { lenis.raf(time * 1000); });
@@ -2730,7 +2743,7 @@
           scrollTrigger: { trigger: '.contact__links', start: 'top 90%', toggleActions: 'play none none none' }
         });
 
-        createLeaves('contactLeaves', 12);
+        if (!isMobile) createLeaves('contactLeaves', 12);
       }
 
       /* Custom Cursor */
