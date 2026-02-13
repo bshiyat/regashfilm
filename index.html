@@ -344,11 +344,7 @@
     .hero__leaf { position: absolute; top: -30px; opacity: 0; }
     .hero__leaf svg { width: 16px; height: 24px; }
 
-    @keyframes hero-breathe {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.008); }
-    }
-    .hero__breathe { animation: hero-breathe 6s ease-in-out infinite; }
+    .hero__breathe { }
 
     /* ============ ABOUT ============ */
     .about { background: var(--cream); }
@@ -1423,7 +1419,6 @@
         -webkit-text-stroke-width: 1.5px;
       }
       .hero__branch { display: none; }
-      .hero__leaves { display: none; }
       .contact__leaves { display: none; }
       .film-progress { display: none; }
       .contact__branch { display: none; }
@@ -1480,8 +1475,7 @@
       .hero__title .word-wrap span { transform: none !important; }
       .hero__subtitle, .hero__location, .hero__scroll { opacity: 1 !important; }
       .hero__est, .hero__title-pre { opacity: 1 !important; }
-      .hero__leaves, .contact__leaves { display: none !important; }
-      .hero__breathe { animation: none !important; }
+      .contact__leaves { display: none !important; }
     }
   </style>
 </head>
@@ -1581,8 +1575,6 @@
     <div class="hero__branch hero__branch--br">
       <svg viewBox="0 0 200 200"><use href="#branch-corner"/></svg>
     </div>
-    <div class="hero__leaves" id="heroLeaves" aria-hidden="true"></div>
-
     <p class="hero__est">EST. 2014</p>
 
     <div class="hero__breathe">
@@ -2267,9 +2259,7 @@
         heroTl.to('.hero__location', { opacity: 0.6, duration: 0.6 }, 1.1);
         heroTl.to('.hero__scroll', { opacity: 1, duration: 0.6 }, 1.2);
 
-        gsap.to('.hero__scroll-line', { height: 40, duration: 1.2, ease: 'power2.inOut', yoyo: true, repeat: -1 });
-
-        createLeaves('heroLeaves', 18);
+        gsap.to('.hero__scroll-line', { height: 40, duration: 1.2, ease: 'power2.inOut' });
 
         if (!isMobile) {
           gsap.to('.hero__branch--tl', {
