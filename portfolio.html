@@ -289,8 +289,9 @@
     'use strict';
 
     const siteNav = document.getElementById('siteNav');
+    siteNav.classList.add('scrolled');
     window.addEventListener('scroll', function () {
-      siteNav.classList.toggle('scrolled', window.scrollY > 60);
+      siteNav.classList.toggle('scrolled', window.scrollY > 0);
     }, { passive: true });
     document.getElementById('navHamburger').addEventListener('click', function () {
       document.getElementById('navMobile').classList.add('open');

@@ -464,7 +464,7 @@
     /* ---- Nav ---- */
     const siteNav = document.getElementById('siteNav');
     window.addEventListener('scroll', function () {
-      siteNav.classList.toggle('scrolled', window.scrollY > 60);
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
     document.getElementById('navHamburger').addEventListener('click', function () {
       document.getElementById('navMobile').classList.add('open');
