@@ -1761,3 +1761,54 @@
       .nav__logo { letter-spacing: 0.15em; }
       .about-photo { aspect-ratio: 1/1; }
     }
+
+    /* ============ DARK SECTION COLOR FIXES ============ */
+    /* Redefine --gold as white inside every dark container so
+       badges, borders, active states stay visible on black backgrounds */
+    .section--dark,
+    .film-section,
+    .festival-table,
+    .timeline-section,
+    .contact.section--dark,
+    .press-quote,
+    .showreel {
+      --gold: #ffffff;
+      --olive-pale: rgba(255,255,255,0.55);
+      --olive-mid: rgba(255,255,255,0.45);
+    }
+
+    /* Nav active / hover — always white regardless of scroll state */
+    .nav__link:hover,
+    .nav__link.active,
+    .site-nav.scrolled .nav__link:hover,
+    .site-nav.scrolled .nav__link.active { color: #ffffff !important; opacity: 1; }
+
+    /* Nav link base in non-scrolled state (over dark hero) */
+    .site-nav:not(.scrolled) .nav__link { color: rgba(255,255,255,0.75); }
+    .site-nav:not(.scrolled) .nav__cta { color: #ffffff; border-color: rgba(255,255,255,0.5); }
+
+    /* Nav link on solid dark bar (scrolled) */
+    .site-nav.scrolled .nav__link { color: rgba(255,255,255,0.7); }
+
+    /* Festival table winner badge — white on dark bg */
+    .ftable__badge { color: #ffffff; border-color: rgba(255,255,255,0.6); }
+    .ftable__badge--winner { background: rgba(255,255,255,0.1); border-color: #ffffff; }
+    .ftable__row--winner td { background: rgba(255,255,255,0.05); }
+    .ftable__row--winner td:first-child { border-left-color: #ffffff; }
+
+    /* Timeline winner badge */
+    .timeline-item__badge { color: #ffffff; border-color: rgba(255,255,255,0.6); }
+    .timeline-item--highlight .timeline-item__dot { background: #ffffff; box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+
+    /* Hero badges (dark hero) */
+    .hero-badge { border-color: rgba(255,255,255,0.3); }
+    .hero-badge--winner { border-color: #ffffff; background: rgba(255,255,255,0.1); }
+    .hero-badge__fest, .hero-badge__label { color: #ffffff; }
+
+    /* Contact links on dark section */
+    .contact__link { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.25); }
+    .contact__link:hover { color: #ffffff; border-color: #ffffff; }
+
+    /* Text selection — keep visible */
+    ::selection { background: #ffffff; color: #111111; }
+    ::-moz-selection { background: #ffffff; color: #111111; }
