@@ -1711,14 +1711,31 @@
     /* ============ MOBILE — PORTFOLIO ============ */
     @media (max-width: 768px) {
       /* About grid */
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-photo { max-width: 100%; aspect-ratio: 3/4; }
-      .about-stats { gap: 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      /* About photo — fixed size so it doesn't fill the whole screen */
+      .about-photo {
+        max-width: 180px;
+        aspect-ratio: 3/4;
+        margin: 0 auto 0.5rem;
+      }
+
+      /* Inner page first section — reduce top padding */
+      .about-section { padding-top: 6rem; }
+
+      .about-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .about-stat__num { font-size: 2rem; }
 
       /* Project list */
       .project-row { grid-template-columns: 2.5rem 1fr; gap: 1rem; padding: 1.2rem 0; }
       .project-row__year { display: none; }
       .project-row__name { font-size: 1rem; }
+      /* Disable hover shift on touch — prevents horizontal overflow flash */
+      .project-row:hover {
+        padding-left: 0; padding-right: 0;
+        margin-left: 0; margin-right: 0;
+        background: transparent;
+      }
 
       /* Timeline */
       .timeline::before { display: none; }
@@ -1729,6 +1746,9 @@
 
     /* ============ MOBILE — BLOG ============ */
     @media (max-width: 768px) {
+      /* Blog first section top padding */
+      .press-quotes-section { padding-top: 6rem; }
+
       /* Press quotes */
       .press-quotes-grid { grid-template-columns: 1fr; }
       .press-quote-card { padding: 1.5rem 1.2rem; }
@@ -1752,20 +1772,38 @@
 
     /* ============ MOBILE — CONTACT ============ */
     @media (max-width: 768px) {
+      /* Contact first section top padding */
+      .contact-form-section { padding-top: 6rem; }
+
       .contact-form-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .cform__row--half { flex-direction: column; }
       .contact-info__email { font-size: 1.2rem; }
       .cform__actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+      /* Prevent iOS from zooming in on input focus */
+      .cform__input, .cform__textarea { font-size: 16px; }
+
+      /* Bigger touch targets */
+      .btn-gold, .btn-outline { min-height: 48px; }
+    }
+
+    /* ============ MOBILE — GLOBAL OVERFLOW GUARD ============ */
+    @media (max-width: 768px) {
+      body { overflow-x: hidden; }
+      .container { width: 100%; }
     }
 
     /* ============ MOBILE — SMALL (375px) ============ */
     @media (max-width: 420px) {
       :root {
         --gutter: 1.2rem;
-        --section-pad: 4rem;
+        --section-pad: 3.5rem;
       }
       .nav__logo { letter-spacing: 0.15em; }
-      .about-photo { aspect-ratio: 1/1; }
+      .about-photo { max-width: 150px; aspect-ratio: 3/4; }
+      .about-section { padding-top: 5.5rem; }
+      .press-quotes-section { padding-top: 5.5rem; }
+      .contact-form-section { padding-top: 5.5rem; }
     }
 
     /* ============ DARK SECTION COLOR FIXES ============ */
