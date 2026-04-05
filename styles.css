@@ -1428,7 +1428,7 @@
 
     /* ============ HOME HERO ============ */
     .home-hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; background: var(--text-dark); }
-    .home-hero__bg { position: absolute; inset: 0; background-image: url('pcc-banner.jpg'); background-size: cover; background-position: center 25%; }
+    .home-hero__bg { position: absolute; inset: 0; top: 4.5rem; background-image: url('pcc-banner.jpg'); background-size: cover; background-position: center 25%; }
     .home-hero__overlay {
       position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(10,10,8,0.05) 0%, rgba(10,10,8,0.15) 40%, rgba(10,10,8,0.55) 75%, rgba(10,10,8,0.75) 100%);
