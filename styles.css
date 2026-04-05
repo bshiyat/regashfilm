@@ -622,6 +622,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
+    }
+    .panel-story__image img {
+      transform: scale(1.06);
+      transform-origin: center top;
     }
     .panel-title__bg-branch {
       position: absolute;
