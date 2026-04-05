@@ -1679,6 +1679,7 @@
         background-image: url('hero-mobile.jpg');
         background-size: 88% auto;
         background-position: center top;
+        background-repeat: no-repeat;
       }
 
       /* Synopsis */
