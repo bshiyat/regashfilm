@@ -1677,7 +1677,7 @@
       }
       .home-hero__bg {
         background-image: url('hero-mobile.jpg');
-        background-size: cover;
+        background-size: 88% auto;
         background-position: center top;
       }
 
