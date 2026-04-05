@@ -1670,9 +1670,12 @@
       .nav__hamburger { display: flex; gap: 5px; }
       .nav__hamburger span { width: 22px; height: 1.5px; }
 
-      /* Home hero — portrait crop */
+      /* Home hero — portrait crop: scale tall so people at bottom are visible */
       .home-hero { min-height: 100svh; }
-      .home-hero__bg { background-position: center 20%; }
+      .home-hero__bg {
+        background-size: auto 130%;
+        background-position: center bottom;
+      }
 
       /* Synopsis */
       .synopsis__grid { grid-template-columns: 1fr; gap: 2rem; }
