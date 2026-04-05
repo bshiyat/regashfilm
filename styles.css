@@ -626,7 +626,8 @@
     }
     .panel-story__image img {
       transform: scale(1.06);
-      transform-origin: center top;
+      transform-origin: center center;
+      object-position: center 65%;
     }
     .panel-title__bg-branch {
       position: absolute;
