@@ -21,15 +21,6 @@
 </head>
 <body>
 
-  <!-- Film Grain -->
-  <svg class="grain-overlay" aria-hidden="true">
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/>
-      <feBlend in="SourceGraphic" mode="overlay"/>
-    </filter>
-    <rect width="100%" height="100%" filter="url(#grain)"/>
-  </svg>
 
   <!-- Custom Cursor -->
   <div class="cursor-dot" aria-hidden="true"></div>
@@ -355,12 +346,7 @@
       });
     }
 
-    function initCollaborators() {
-      const scroll = document.getElementById('collabScroll');
-      if (!scroll) return;
-      const w = scroll.scrollWidth / 2;
-      gsap.to(scroll, { x: -w, duration: 55, ease: 'none', repeat: -1, modifiers: { x: gsap.utils.unitize(function (x) { return parseFloat(x) % w; }) } });
-    }
+    function initCollaborators() { /* handled by CSS animation */ }
 
     function initCursor() {
       if (isMobile || !window.matchMedia('(pointer: fine)').matches) return;

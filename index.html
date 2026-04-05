@@ -25,15 +25,6 @@
 </head>
 <body>
 
-  <!-- Film Grain -->
-  <svg class="grain-overlay" aria-hidden="true">
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/>
-      <feBlend in="SourceGraphic" mode="overlay"/>
-    </filter>
-    <rect width="100%" height="100%" filter="url(#grain)"/>
-  </svg>
 
   <!-- Custom Cursor -->
   <div class="cursor-dot" aria-hidden="true"></div>
@@ -513,14 +504,12 @@
     }
 
     function initHomeHero() {
-      if (!isMobile) {
-        gsap.to('#heroBg', { y: '20%', ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1 } });
-      }
+
     }
 
     function initShowreel() {
       gsap.from('.showreel__content', { y: 60, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '#showreel', start: 'top 70%', toggleActions: 'play none none none' } });
-      if (!isMobile) { gsap.to('#showreelBgInner', { y: '15%', ease: 'none', scrollTrigger: { trigger: '#showreel', start: 'top bottom', end: 'bottom top', scrub: 1 } }); }
+
       var trailerBtn = document.getElementById('trailerPlayBtn');
       var overlay = document.getElementById('trailerOverlay');
       var closeBtn = document.getElementById('trailerCloseBtn');
@@ -548,12 +537,7 @@
       }
     }
 
-    function initMarquees() {
-      const t1 = document.getElementById('marquee1');
-      const t2 = document.getElementById('marquee2');
-      if (t1) { const w = t1.scrollWidth / 3; gsap.to(t1, { x: -w, duration: 25, ease: 'none', repeat: -1, modifiers: { x: gsap.utils.unitize(function (x) { return parseFloat(x) % w; }) } }); }
-      if (t2) { const w = t2.scrollWidth / 3; gsap.fromTo(t2, { x: -w }, { x: 0, duration: 30, ease: 'none', repeat: -1, modifiers: { x: gsap.utils.unitize(function (x) { return parseFloat(x) % w; }) } }); }
-    }
+    function initMarquees() { /* handled by CSS animation */ }
 
     function initFilmSection() {
       gsap.utils.toArray('.film-panel').forEach(function (panel) {
@@ -579,19 +563,14 @@
         .from('.press-quote__text', { y: 40, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.3')
         .from('.press-quote__line-bottom', { scaleX: 0, duration: 0.8, ease: 'power3.inOut' }, '-=0.4')
         .from('.press-quote__attr', { y: 20, opacity: 0, duration: 0.6 }, '-=0.3');
-      if (!isMobile) { gsap.to('.press-quote__text', { y: -30, ease: 'none', scrollTrigger: { trigger: '#pressQuote', start: 'top bottom', end: 'bottom top', scrub: 1 } }); }
+
     }
 
     function initWorkGrid() {
       gsap.from('.work-card', { y: 80, opacity: 0, scale: 0.95, stagger: { each: 0.08, from: 'start' }, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: '.work-grid', start: 'top 80%', toggleActions: 'play none none none' } });
     }
 
-    function initCollaborators() {
-      const scroll = document.getElementById('collabScroll');
-      if (!scroll) return;
-      const w = scroll.scrollWidth / 2;
-      gsap.to(scroll, { x: -w, duration: 55, ease: 'none', repeat: -1, modifiers: { x: gsap.utils.unitize(function (x) { return parseFloat(x) % w; }) } });
-    }
+    function initCollaborators() { /* handled by CSS animation */ }
 
     function initContact() {
       const words = document.querySelectorAll('.contact__heading .word');

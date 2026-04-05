@@ -1812,3 +1812,50 @@
     /* Text selection — keep visible */
     ::selection { background: #ffffff; color: #111111; }
     ::-moz-selection { background: #ffffff; color: #111111; }
+
+    /* ============ PERFORMANCE OVERRIDES ============ */
+
+    /* Remove grain overlay — was feTurbulence SVG filter on entire page (massive repaint) */
+    .grain-overlay { display: none !important; }
+
+    /* Nav: drop backdrop-filter blur — forces GPU compositing on entire page behind nav */
+    .site-nav.scrolled {
+      background: rgba(17,17,17,0.98) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    /* CSS marquee animations — runs on compositor thread, zero JS overhead */
+    @keyframes marquee-fwd  { from { transform: translateX(0); } to { transform: translateX(-33.333%); } }
+    @keyframes marquee-back { from { transform: translateX(-33.333%); } to { transform: translateX(0); } }
+
+    #marquee1 {
+      animation: marquee-fwd 28s linear infinite;
+      will-change: transform;
+    }
+    #marquee2 {
+      animation: marquee-back 34s linear infinite;
+      will-change: transform;
+    }
+
+    /* CSS collab scroll — same approach */
+    @keyframes collab-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    #collabScroll {
+      animation: collab-scroll 60s linear infinite;
+      will-change: transform;
+      display: flex;
+      width: max-content;
+    }
+
+    /* Pause animations when tab not visible */
+    @media (prefers-reduced-motion: reduce) {
+      #marquee1, #marquee2, #collabScroll { animation: none; }
+    }
+
+    /* Promoted layers only where they move */
+    .home-hero__bg { will-change: auto; }
+    .showreel__bg-inner { will-change: auto; }
+
+    /* Contain paint on sections */
+    .section { contain: layout; }
+    .film-section { contain: layout; }
