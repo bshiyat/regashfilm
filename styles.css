@@ -1670,11 +1670,15 @@
       .nav__hamburger { display: flex; gap: 5px; }
       .nav__hamburger span { width: 22px; height: 1.5px; }
 
-      /* Home hero — portrait crop: scale tall so people at bottom are visible */
-      .home-hero { min-height: 100svh; }
+      /* Home hero — show full poster on mobile */
+      .home-hero {
+        min-height: auto;
+        height: 100svh;
+        align-items: center;
+      }
       .home-hero__bg {
-        background-size: auto 130%;
-        background-position: center bottom;
+        background-size: contain;
+        background-position: center center;
       }
 
       /* Synopsis */
