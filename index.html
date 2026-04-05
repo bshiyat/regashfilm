@@ -27,8 +27,6 @@
 
 
   <!-- Custom Cursor -->
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
 
   <!-- SVG Definitions -->
   <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
@@ -447,7 +445,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script>
   (function () {
     'use strict';
@@ -465,7 +462,6 @@
     });
 
     gsap.registerPlugin(ScrollTrigger);
-    let lenis;
     const isMobile = window.innerWidth < 901;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -492,21 +488,6 @@
       });
     }
 
-
-
-
-    function initLenis() {
-      if (isMobile) { ScrollTrigger.defaults({ scroller: window }); return; }
-      lenis = new Lenis({ duration: 1.2, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
-    }
-
-    function initHomeHero() {
-
-    }
-
     function initShowreel() {
       gsap.from('.showreel__content', { y: 60, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '#showreel', start: 'top 70%', toggleActions: 'play none none none' } });
 
@@ -530,14 +511,12 @@
       if (divLine) {
         try {
           const len = divLine.getTotalLength(); divLine.style.strokeDasharray = len; divLine.style.strokeDashoffset = len;
-          const t = gsap.timeline({ scrollTrigger: { trigger: '#oliveDivider', start: 'top 80%', end: 'bottom 30%', scrub: 1 } });
+          const t = gsap.timeline({ scrollTrigger: { trigger: '#oliveDivider', start: 'top 80%', toggleActions: 'play none none none' } });
           t.to(divLine, { strokeDashoffset: 0, duration: 1 });
           divLeaves.forEach(function (leaf, i) { gsap.set(leaf, { scale: 0, transformOrigin: 'center center' }); t.to(leaf, { scale: 1, duration: 0.15 }, 0.3 + i * 0.05); });
         } catch (e) {}
       }
     }
-
-    function initMarquees() { /* handled by CSS animation */ }
 
     function initFilmSection() {
       gsap.utils.toArray('.film-panel').forEach(function (panel) {
@@ -563,49 +542,21 @@
         .from('.press-quote__text', { y: 40, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.3')
         .from('.press-quote__line-bottom', { scaleX: 0, duration: 0.8, ease: 'power3.inOut' }, '-=0.4')
         .from('.press-quote__attr', { y: 20, opacity: 0, duration: 0.6 }, '-=0.3');
-
     }
 
     function initWorkGrid() {
-      gsap.from('.work-card', { y: 80, opacity: 0, scale: 0.95, stagger: { each: 0.08, from: 'start' }, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: '.work-grid', start: 'top 80%', toggleActions: 'play none none none' } });
+      gsap.from('.work-card', { y: 60, opacity: 0, stagger: 0.08, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: '.work-grid', start: 'top 80%', toggleActions: 'play none none none' } });
     }
-
-    function initCollaborators() { /* handled by CSS animation */ }
 
     function initContact() {
       const words = document.querySelectorAll('.contact__heading .word');
       gsap.to(words, { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '#contact', start: 'top 70%', toggleActions: 'play none none none' } });
       gsap.from('.contact__email', { y: 30, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power2.out', scrollTrigger: { trigger: '#contact', start: 'top 70%', toggleActions: 'play none none none' } });
-      gsap.from('.contact__link', { y: 20, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out', scrollTrigger: { trigger: '.contact__links', start: 'top 90%', toggleActions: 'play none none none' } });
-    }
-
-    function initCursor() {
-      if (isMobile || !window.matchMedia('(pointer: fine)').matches) return;
-      const dot = document.querySelector('.cursor-dot');
-      const ring = document.querySelector('.cursor-ring');
-      if (!dot || !ring) return;
-      const moveDotX = gsap.quickTo(dot, 'left', { duration: 0.15, ease: 'power3' });
-      const moveDotY = gsap.quickTo(dot, 'top', { duration: 0.15, ease: 'power3' });
-      const moveRingX = gsap.quickTo(ring, 'left', { duration: 0.35, ease: 'power3' });
-      const moveRingY = gsap.quickTo(ring, 'top', { duration: 0.35, ease: 'power3' });
-      window.addEventListener('mousemove', function (e) { moveDotX(e.clientX); moveDotY(e.clientY); moveRingX(e.clientX); moveRingY(e.clientY); });
-      document.querySelectorAll('a, button, .work-card, .festival-card, .magnetic-btn').forEach(function (el) {
-        el.addEventListener('mouseenter', function () { ring.classList.add('is-hover'); });
-        el.addEventListener('mouseleave', function () { ring.classList.remove('is-hover'); });
-      });
-    }
-
-    function initMagneticButtons() {
-      if (isMobile) return;
-      document.querySelectorAll('.magnetic-btn').forEach(function (btn) {
-        btn.addEventListener('mousemove', function (e) { const r = btn.getBoundingClientRect(); gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.2, y: (e.clientY - r.top - r.height / 2) * 0.2, duration: 0.3, ease: 'power2.out' }); });
-        btn.addEventListener('mouseleave', function () { gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,0.4)' }); });
-      });
     }
 
     function initBackToTop() {
       const btn = document.getElementById('backToTop');
-      if (btn) btn.addEventListener('click', function () { if (lenis) lenis.scrollTo(0, { duration: 2 }); else window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      if (btn) btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
     }
 
     let resizeTimer;
@@ -616,18 +567,12 @@
 
     initSVGStrokes();
     if (!prefersReducedMotion) {
-      initLenis();
-      initHomeHero();
       initShowreel();
       initDivider();
-      initMarquees();
       initFilmSection();
       initPressQuote();
       initWorkGrid();
-      initCollaborators();
       initContact();
-      initCursor();
-      initMagneticButtons();
       initBackToTop();
     }
   })();
