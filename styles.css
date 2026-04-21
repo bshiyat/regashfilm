@@ -1383,7 +1383,7 @@
     .nav__hamburger span { display: block; width: 24px; height: 1px; background: var(--cream); transition: transform 0.3s, opacity 0.3s; }
     .nav__mobile {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--dark-olive); z-index: 190;
+      background: var(--dark-olive); z-index: 9999;
       flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
     }
     .nav__mobile.open { display: flex; }
@@ -1391,6 +1391,12 @@
     .nav__mobile-close { position: absolute; top: 1.5rem; right: var(--gutter); background: none; border: none; color: var(--cream); font-size: 2rem; cursor: pointer; }
     @media (max-width: 768px) {
       .nav__links { display: none; } .nav__cta { display: none; } .nav__hamburger { display: flex; }
+    }
+
+    /* Anchor offset: compensates for fixed nav (~4.5rem height) */
+    #synopsis, #showreel, #filmSection, #pressQuote, #work, #collaborators, #contact,
+    #hero, #about, #timeline, #filmography {
+      scroll-margin-top: 4.5rem;
     }
 
     /* ============ HOME HERO ============ */
@@ -1865,6 +1871,10 @@
       display: flex;
       width: max-content;
     }
+
+    /* Pause marquee/collab on hover */
+    .marquee-row:hover .marquee-track { animation-play-state: paused; }
+    #collabScroll:hover { animation-play-state: paused; }
 
     /* Pause animations when tab not visible */
     @media (prefers-reduced-motion: reduce) {
